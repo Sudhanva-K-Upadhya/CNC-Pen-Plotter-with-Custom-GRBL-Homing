@@ -10,21 +10,6 @@ A DIY CNC pen plotter built on an **Arduino Uno + CNC Shield**, running a fork o
   <img src="images/machine-front.jpg" width="500"/>
 </p>
 
-<p align="center">
-  <img src="images/machine-side.jpg" width="500"/>
-</p>
-
-<p align="center">
-  <img src="images/arduino-cnc-shield.jpg" width="500"/>
-</p>
-
-<p align="center">
-  <img src="images/pen-carriage.jpg" width="500"/>
-</p>
-
-<p align="center">
-  <img src="images/first-plot.jpg" width="500"/>
-</p>
 
 ---
 
@@ -32,13 +17,13 @@ A DIY CNC pen plotter built on an **Arduino Uno + CNC Shield**, running a fork o
 
 | Component | Details |
 |-----------|---------|
-| Microcontroller | Arduino Uno (ATmega328P) |
+| Microcontroller | Arduino Uno |
 | Motion controller | CNC Shield v3 |
-| Stepper drivers | A4988 / DRV8825 (×3) |
+| Stepper drivers | DRV8825 (×2) |
 | Steppers | NEMA 17 (X and Y axes) |
-| Pen lift | Servo motor or small NEMA 17 (Z axis) |
-| Frame | _(describe your frame — e.g. 3D printed, laser cut, aluminium extrusion)_ |
-| Power supply | 12 V DC, ≥ 2 A |
+| Pen lift | Servo motor |
+| Frame | 3D printed and smooth rods of 300mm |
+| Power supply | DC 12V 5A |
 | Limit switches | 2× microswitches (X-min, Y-min) |
 
 ---
@@ -77,37 +62,37 @@ The following lines were **added by me** to `grbl/config.h` to suit my specific 
 Connect via a serial monitor (115200 baud) and apply these recommended starting values:
 
 ```
-$0  = 10      ; Step pulse time (µs)
-$1  = 25      ; Step idle delay (ms)
-$2  = 0       ; Step port invert mask
-$3  = 0       ; Direction port invert mask — adjust if axes move backwards
-$4  = 0       ; Step enable invert (0 = active LOW for CNC shield)
-$5  = 0       ; Limit pins invert (set to 1 if using NC switches)
-$6  = 0       ; Probe pin invert
-$10 = 1       ; Status report mask
-$11 = 0.010   ; Junction deviation (mm)
-$12 = 0.002   ; Arc tolerance (mm)
-$13 = 0       ; Report in inches (0 = mm)
-$20 = 0       ; Soft limits (enable after tuning $130/$131)
-$21 = 1       ; Hard limits — enable if limit switches are wired
-$22 = 1       ; Homing cycle — ENABLE (required for custom homing)
-$23 = 3       ; Homing direction invert (bits: X=bit0, Y=bit1) — home toward min switches
-$24 = 50.000  ; Homing feed rate (mm/min)
-$25 = 500.000 ; Homing seek rate (mm/min)
-$26 = 250     ; Homing debounce delay (ms)
-$27 = 1.000   ; Homing pull-off distance (mm)
-$100 = 80.000 ; X steps/mm — calibrate for your machine
-$101 = 80.000 ; Y steps/mm — calibrate for your machine
-$102 = 800.000; Z steps/mm — calibrate for pen-lift servo/stepper
-$110 = 3000   ; X max rate (mm/min)
-$111 = 3000   ; Y max rate (mm/min)
-$112 = 500    ; Z max rate (mm/min)
-$120 = 200    ; X acceleration (mm/sec²)
-$121 = 200    ; Y acceleration (mm/sec²)
-$122 = 50     ; Z acceleration (mm/sec²)
-$130 = 200    ; X max travel (mm) — set to your actual bed size
-$131 = 200    ; Y max travel (mm) — set to your actual bed size
-$132 = 10     ; Z max travel (mm)
+$0=20
+$1=25
+$2=0
+$3=0
+$4=0
+$5=0
+$6=0
+$10=2
+$11=0.010
+$12=0.002
+$13=0
+$20=0
+$21=0
+$22=1
+$23=3
+$24=150.000
+$25=800.000
+$26=250
+$27=4.000
+$100=208.333
+$101=208.333
+$102=100.000
+$110=400.000
+$111=600.000
+$112=500.000
+$120=20.000
+$121=20.000
+$122=5.000
+$130=200.000
+$131=200.000
+$132=200.000
 ```
 
 ---
