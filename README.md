@@ -113,7 +113,7 @@ Arduino Uno
   └── CNC Shield v3
         ├── X driver  → X stepper (left-right axis)
         ├── Y driver  → Y stepper (front-back / gantry axis)
-        ├── Z driver  → Z stepper or servo (pen lift)
+        ├── Z driver  → servo D11
         ├── X-min pin → limit switch (X home)
         └── Y-min pin → limit switch (Y home)
 
@@ -121,43 +121,15 @@ Power:
   12 V PSU → CNC shield VIN/GND terminals
   USB      → Arduino (for serial/flashing only — do NOT power steppers via USB)
 ```
-
-> 📷 _Add your wiring diagram photo here:_
-
-<p align="center">
-  <img src="images/wiring-diagram.jpg" width="500"/>
-</p>
-
 ---
 
 ## 🚀 Getting Started
 
 ### 1 — Flash the firmware
+- put the GRBL into the arduino ide library directory
+- open arduino ide > examples > GRBL > select the port and board and upload
 
-```bash
-# Clone this repo
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
-cd YOUR_REPO
-
-# Open in Arduino IDE
-# Board   : Arduino Uno
-# Port    : COMx / /dev/ttyUSBx
-# Sketch  : grbl/examples/grblUpload/grblUpload.ino
-# Upload  ✔
-```
-
-### 2 — Connect & configure
-
-Open Arduino IDE Serial Monitor (or any G-code sender) at **115 200 baud**.
-
-```
-$$          ; view current settings
-$22=1       ; enable homing
-$21=1       ; enable hard limits
-$H          ; run homing cycle (Y homes first, then X)
-```
-
-### 3 — Run a plot
+### 2 — Run a plot
 
 Use any G-code sender that supports GRBL:
 
@@ -169,28 +141,9 @@ Generate G-code from SVG with **Inkscape 0.92** using the extension from [Coders
 
 ---
 
-## 📁 Repository Structure
-
-```
-.
-├── grbl/                  # Modified GRBL source
-│   ├── config.h           # ← Custom homing sequence lives here
-│   └── ...
-├── images/                # Your photos go here
-│   ├── machine-front.jpg
-│   ├── machine-side.jpg
-│   ├── arduino-cnc-shield.jpg
-│   ├── pen-carriage.jpg
-│   ├── wiring-diagram.jpg
-│   └── first-plot.jpg
-├── gcode/                 # Example G-code files
-│   └── test-square.nc
-└── README.md
-```
-
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 | Symptom | Likely cause | Fix |
 |---------|-------------|-----|
