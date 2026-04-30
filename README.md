@@ -7,7 +7,16 @@ A DIY CNC pen plotter built on an **Arduino Uno + CNC Shield**, running a fork o
 ## 📸 Gallery
 
 <p align="center">
-  <img src="images/machine-front.jpg" width="500"/>
+  <img src="img1.jpg" width="500"/>
+</p>
+<p align="center">
+  <img src="img.jpg" width="500"/>
+</p>
+<p align="center">
+  <img src="img2.jpg" width="500"/>
+</p>
+<p align="center">
+  <img src="img3.jpg" width="500"/>
 </p>
 
 
